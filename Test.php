@@ -95,20 +95,83 @@
  *
  * @return Generator
  */
-function generator()
-{
-    echo 'Start', "\n";
+#function generator()
+#{
+#    echo 'Start', "\n";
+#
+#    for($i = 0; $i <= 5; ++$i) {
+#        yield $i;
+#        echo 'Value: ', $i, "\n";
+#    }
+#
+#    echo 'Finish', "\n";
+#}
+#
+#$generator = generator();
+#
+#var_dump($generator); // object(Generator)[1]
+#
+#foreach($generator as $value);
 
-    for($i = 0; $i <= 5; ++$i) {
-        yield $i;
-        echo 'Value: ', $i, "\n";
+/**
+ * Read Line in .txt file helpful \Iterator
+ */
+require_once __DIR__ . '/SPL/FileIterator.php';
+
+use SPL\FileIterator;
+
+
+$f = __DIR__ . '/res/data.txt';
+
+$FI = new FileIterator($f);
+
+foreach($FI as $line) {
+
+    if($line === 'Line Two' . "\n") {
+        echo '========', "\n";
+
+        continue;
     }
 
-    echo 'Finish', "\n";
+    echo $line;
 }
 
-$generator = generator();
+echo "\n\n";
 
-//var_dump($generator); // object(Generator)[1]
+/**
+ * Read Line in .txt file helpful \Iterator
+ *
+ * @param resource $file
+ *
+ * @return Generator
+ * @throws Exception
+ */
+function getLines($file)
+{
+    $file = fopen($file, "r");
 
-foreach($generator as $value);
+    if(!$file) {
+        throw new Exception();
+    }
+
+    while($line = fgets($file)) {
+        yield $line;
+    }
+
+    fclose($file);
+}
+
+/**
+ * @var resource $file
+ */
+$file = __DIR__ . '/res/data.txt';
+
+foreach(getLines($file) as $line) {
+    if($line === 'Line Two' . "\n") {
+        echo '========', "\n";
+
+        continue;
+    }
+
+    echo $line;
+}
