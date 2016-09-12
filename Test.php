@@ -141,10 +141,9 @@
 /**
  * Read Line in .txt file helpful Generator
  *
-*@param resource $file
-
+ * @param resource $file
  *
-*@return Generator
+ * @return Generator
  * @throws Exception
  */
 #function getLines($file): Generator
@@ -176,4 +175,75 @@
 #
 #    echo $line;
 #}
+/**
+ * @return Generator
+ */
+function generator()
+{
+    yield 'a';
+    yield 'c';
+    yield 'lo';
+    yield [
+        'Anna' => [
+            'name' => 'anna',
+            'year' => 18,
+        ],
 
+        'array' => [
+            /*0 =>*/
+            'gdfghjhdgfj',
+            /*1 =>*/
+            'dhgjhdgj',
+            /*2 =>*/
+            'hgdjdghjdhg',
+            /*3 =>*/
+            'hdgjdghj',
+            /*4 =>*/
+            'ghdjhdgj',
+            /*5 =>*/
+            'hdgjghdj',
+            /*6 =>*/
+            'dyjdhgjhg',
+        ],
+
+        'Vasya' => [
+            'name' => 'Vasiliy',
+            'year' => 86,
+        ],
+    ];
+    yield 'Lancer' => [
+        'name' => 'Lancer',
+        'year' => 24,
+        'phone' => [
+            'tele2' => [
+                '0' => 'num1',
+                'num2',
+            ],
+            'megafon' => 'mega1',
+            'mts' => 'm1',
+        ]
+    ];
+}
+
+foreach(generator() as $key => $value) {
+    echo $key, ' : ', $value, "\n";
+}
+
+echo "=======\n";
+
+function echoLogger()
+{
+    while(true) {
+        echo 'Log: ' . yield . "\n";
+    }
+}
+
+/** @noinspection PhpVoidFunctionResultUsedInspection */
+$logger = echoLogger();
+/**
+ * @var $logger Generator
+ */
+$logger->send('Foo');
+$logger->send('Franc');
+
+echo "=======\n";
