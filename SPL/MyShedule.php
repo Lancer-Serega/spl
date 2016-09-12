@@ -11,9 +11,6 @@ namespace SPL;
 
 require_once('MyIterator.php');
 
-use SPL\MyIterator;
-use Traversable;
-
 
 class MyShedule implements \IteratorAggregate
 {

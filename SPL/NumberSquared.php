@@ -34,7 +34,7 @@ class NumberSquared implements \Iterator
         return $this->_cur;
     }
 
-    public function valid() : boolean
+    public function valid()
     {
         return $this->_cur <= $this->_obj->getEnd();
     }

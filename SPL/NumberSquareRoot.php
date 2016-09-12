@@ -5,6 +5,7 @@
  * Date: 12.09.2016
  * Time: 6:19
  */
+declare(strict_types = 1);
 
 namespace SPL;
 

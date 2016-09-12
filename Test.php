@@ -42,9 +42,24 @@ declare(strict_types = 1);
 #}
 
 /**
- * хз
+ * Iterator
+ * MathIterator
+ * IteratorAggregate
  */
-require_once('SPL\MyIterator.php');
+require_once('SPL\MathIterator.php');
 
-use SPL\NumberSquared;
+use SPL\MathIterator;
 
+
+$obj1 = new MathIterator(1, 20, 'pow');
+$obj2 = new MathIterator(1, 20, 'sqrt');
+
+foreach($obj1 as $key => $value) {
+    echo 'Pow int:', $key, ' = ', $value, "\n";
+}
+
+echo "\n\n";
+
+foreach($obj2 as $key => $value) {
+    echo 'Sqrt int:', $key, ' = ', $value, "\n";
+}
