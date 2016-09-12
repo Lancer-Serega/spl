@@ -8,17 +8,30 @@
 
 namespace SPL;
 
+/**
+ * Class NumberSquared
+ *
+ * @package SPL
+ */
 class NumberSquared implements \Iterator
 {
     private $_cur;
     private $_obj;
 
+    /**
+     * NumberSquared constructor.
+     *
+     * @param $obj
+     */
     public function __construct($obj)
     {
         $this->_obj = $obj;
     }
 
-    public function current()
+    /**
+     * @return number
+     */
+    public function current(): number
     {
         return pow($this->_cur, 2);
     }
@@ -28,11 +41,17 @@ class NumberSquared implements \Iterator
         $this->_cur++;
     }
 
-    public function key()
+    /**
+     * @return mixed
+     */
+    public function key(): mixed
     {
         return $this->_cur;
     }
 
+    /**
+     * @return bool
+     */
     public function valid()
     {
         return $this->_cur <= $this->_obj->getEnd();

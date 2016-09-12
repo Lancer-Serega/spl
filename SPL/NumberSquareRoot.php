@@ -8,16 +8,29 @@
 
 namespace SPL;
 
+/**
+ * Class NumberSquareRoot
+ *
+ * @package SPL
+ */
 class NumberSquareRoot implements \Iterator
 {
     private $_cur;
     private $_obj;
 
+    /**
+     * NumberSquareRoot constructor.
+     *
+     * @param $obj
+     */
     public function __construct($obj)
     {
         $this->_obj = $obj;
     }
 
+    /**
+     * @return float
+     */
     public function current()
     {
         return sqrt($this->_cur);
@@ -28,11 +41,17 @@ class NumberSquareRoot implements \Iterator
         $this->_cur++;
     }
 
+    /**
+     * @return mixed
+     */
     public function key()
     {
         return $this->_cur;
     }
 
+    /**
+     * @return bool
+     */
     public function valid()
     {
         return $this->_cur <= $this->_obj->getEnd();

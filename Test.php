@@ -95,7 +95,7 @@
  *
  * @return Generator
  */
-#function generator()
+#function generator(): Generator
 #{
 #    echo 'Start', "\n";
 #
@@ -116,27 +116,27 @@
 /**
  * Read Line in .txt file helpful \Iterator
  */
-require_once __DIR__ . '/SPL/FileIterator.php';
-
-use SPL\FileIterator;
-
-
-$f = __DIR__ . '/res/data.txt';
-
-$FI = new FileIterator($f);
-
-foreach($FI as $line) {
-
-    if($line === 'Line Two' . "\n") {
-        echo '========', "\n";
-
-        continue;
-    }
-
-    echo $line;
-}
-
-echo "\n\n";
+#require_once __DIR__ . '/SPL/FileIterator.php';
+#
+#use SPL\FileIterator;
+#
+#
+#$f = __DIR__ . '/res/data.txt';
+#
+#$FI = new FileIterator($f);
+#
+#foreach($FI as $line) {
+#
+#    if($line === 'Line Two' . "\n") {
+#        echo '========', "\n";
+#
+#        continue;
+#    }
+#
+#    echo $line;
+#}
+#
+#echo "\n\n";
 
 /**
  * Read Line in .txt file helpful \Iterator
@@ -146,32 +146,33 @@ echo "\n\n";
  * @return Generator
  * @throws Exception
  */
-function getLines($file)
-{
-    $file = fopen($file, "r");
-
-    if(!$file) {
-        throw new Exception();
-    }
-
-    while($line = fgets($file)) {
-        yield $line;
-    }
-
-    fclose($file);
-}
+#function getLines($file): Generator
+#{
+#    $file = fopen($file, "r");
+#
+#    if(!$file) {
+#        throw new Exception();
+#    }
+#
+#    while($line = fgets($file)) {
+#        yield $line;
+#    }
+#
+#    fclose($file);
+#}
 
 /**
  * @var resource $file
  */
-$file = __DIR__ . '/res/data.txt';
+#$file = __DIR__ . '/res/data.txt';
+#
+#foreach(getLines($file) as $line) {
+#    if($line === 'Line Two' . "\n") {
+#        echo '========', "\n";
+#
+#        continue;
+#    }
+#
+#    echo $line;
+#}
 
-foreach(getLines($file) as $line) {
-    if($line === 'Line Two' . "\n") {
-        echo '========', "\n";
-
-        continue;
-    }
-
-    echo $line;
-}

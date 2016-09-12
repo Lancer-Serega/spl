@@ -11,10 +11,21 @@ namespace SPL;
 require_once __DIR__ . '/MyIterator.php';
 
 
+/**
+ * Class MyShedule
+ *
+ * @package SPL
+ */
 class MyShedule implements \IteratorAggregate
 {
+    /**
+     * @var array
+     */
     private $items = [];
 
+    /**
+     * @return MyIterator
+     */
     public function getIterator() : MyIterator
     {
         asort($this->items);
@@ -22,6 +33,10 @@ class MyShedule implements \IteratorAggregate
         return new MyIterator($this->items);
     }
 
+    /**
+     * @param $key
+     * @param $value
+     */
     public function add($key, $value)
     {
         $this->items[$key] = $value;

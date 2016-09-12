@@ -8,17 +8,33 @@
 
 namespace SPL;
 
+/**
+ * Class MyIterator
+ *
+ * @package SPL
+ */
 class MyIterator implements \Iterator
 {
+    /**
+     * @var array
+     */
     private $var = [];
     private $count = 0;
 
+    /**
+     * MyIterator constructor.
+     *
+     * @param array $array
+     */
     public function __construct(array $array)
     {
         $this->var = $array;
         $this->count = count($array);
     }
 
+    /**
+     * @return string
+     */
     public function __toString() : string
     {
         return json_encode($this->var);
@@ -41,21 +57,33 @@ class MyIterator implements \Iterator
         reset($this->var);
     }
 
+    /**
+     * @return mixed
+     */
     public function key()
     {
         return key($this->var);
     }
 
+    /**
+     * @return mixed
+     */
     public function next()
     {
         return next($this->var);
     }
 
+    /**
+     * @return bool
+     */
     public function valid() : bool
     {
         return $this->current() !== 0;
     }
 
+    /**
+     * @return false|string
+     */
     public function current()
     {
 

@@ -11,6 +11,12 @@ namespace SPL;
 require_once __DIR__ . '/NumberSquared.php';
 require_once __DIR__ . '/NumberSquareRoot.php';
 
+
+/**
+ * Class MathIterator
+ *
+ * @package SPL
+ */
 class MathIterator implements \IteratorAggregate
 {
     public $_start;
@@ -18,8 +24,9 @@ class MathIterator implements \IteratorAggregate
     public $_action;
 
     /**
-     * @param int $start
+     * @param $start
      *
+     * @return MathIterator
      */
     public function setStart($start): MathIterator
     {
@@ -29,7 +36,9 @@ class MathIterator implements \IteratorAggregate
     }
 
     /**
-     * @param int $end
+     * @param $end
+     *
+     * @return MathIterator
      */
     public function setEnd($end): MathIterator
     {
@@ -39,7 +48,9 @@ class MathIterator implements \IteratorAggregate
     }
 
     /**
-     * @param string $action
+     * @param $action
+     *
+     * @return MathIterator
      */
     public function setAction($action): MathIterator
     {
@@ -48,6 +59,10 @@ class MathIterator implements \IteratorAggregate
         return $this;
     }
 
+    /**
+     * @return NumberSquared|NumberSquareRoot
+     * @throws \Exception
+     */
     public function getIterator()
     {
         switch($this->_action){
@@ -70,12 +85,17 @@ class MathIterator implements \IteratorAggregate
         $this->_end = $_end;
         $this->_action = $_action;
     }*/
-
+    /**
+     * @return mixed
+     */
     public function getStart()
     {
         return $this->_start;
     }
 
+    /**
+     * @return mixed
+     */
     public function getEnd()
     {
         return $this->_end;
