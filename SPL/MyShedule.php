@@ -1,15 +1,14 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Created by PhpStorm.
  * User: Lancer
  * Date: 12.09.2016
  * Time: 4:14
  */
-declare(strict_types = 1);
 
 namespace SPL;
 
-require_once('MyIterator.php');
+require_once __DIR__ . '/MyIterator.php';
 
 
 class MyShedule implements \IteratorAggregate

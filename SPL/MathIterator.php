@@ -1,16 +1,15 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Created by PhpStorm.
  * User: Lancer
  * Date: 12.09.2016
  * Time: 6:28
  */
-declare(strict_types = 1);
 
 namespace SPL;
 
-require_once ('NumberSquared.php');
-require_once ('NumberSquareRoot.php');
+require_once __DIR__ . '/NumberSquared.php';
+require_once __DIR__ . '/NumberSquareRoot.php';
 
 class MathIterator implements \IteratorAggregate
 {

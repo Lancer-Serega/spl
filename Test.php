@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Created by PhpStorm.
  * User: Lancer
  * Date: 12.09.2016
  * Time: 3:33
  */
-declare(strict_types = 1);
 
 /**
  * Iterator
@@ -43,8 +42,7 @@ declare(strict_types = 1);
 
 /**
  * Iterator
- * MathIterator
- * IteratorAggregate
+ * MathIterator implements IteratorAggregate
  */
 #require_once __DIR__ . '/SPL/MathIterator.php';
 #
@@ -77,17 +75,18 @@ declare(strict_types = 1);
  * Registry implements ArrayAccess
  * Object as Array
  */
-require_once __DIR__ . '/SPL/Registry.php';
+#require_once __DIR__ . '/SPL/Registry.php';
+#
+#use SPL\Registry;
+#
+#
+#$obj = new Registry();
+#$obj['login'] = 'Lancer';
+#$obj['password'] = 'pass@word';
+#
+#if(isset($obj['login'])) {
+#    echo $obj['login'], ' : ', $obj['password'];
+#}
+#
+#unset($obj['password']);
 
-use SPL\Registry;
-
-
-$obj = new Registry();
-$obj['login'] = 'Lancer';
-$obj['password'] = 'pass@word';
-
-if(isset($obj['login'])) {
-    echo $obj['login'], ' : ', $obj['password'];
-}
-
-unset($obj['password']);

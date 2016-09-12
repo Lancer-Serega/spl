@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Created by PhpStorm.
  * User: Lancer
@@ -8,6 +8,11 @@
 
 namespace SPL;
 
+/**
+ * Class Registry
+ *
+ * @package SPL
+ */
 class Registry implements \ArrayAccess
 {
     /**
@@ -28,7 +33,7 @@ class Registry implements \ArrayAccess
      *
      * @return Registry
      */
-    public function setProps(array $props)
+    public function setProps(array $props): Registry
     {
         $this->props = $props;
 
@@ -40,7 +45,7 @@ class Registry implements \ArrayAccess
      *
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->props[$offset]);
     }
@@ -65,7 +70,7 @@ class Registry implements \ArrayAccess
      *
      * @return bool
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): bool
     {
         $this->props[$offset] = $value;
 
@@ -77,7 +82,7 @@ class Registry implements \ArrayAccess
      *
      * @return bool
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): bool
     {
         unset($this->props[$offset]);
 
