@@ -139,11 +139,12 @@
 #echo "\n\n";
 
 /**
- * Read Line in .txt file helpful \Iterator
+ * Read Line in .txt file helpful Generator
  *
- * @param resource $file
+*@param resource $file
+
  *
- * @return Generator
+*@return Generator
  * @throws Exception
  */
 #function getLines($file): Generator
