@@ -7,11 +7,43 @@
  */
 declare(strict_types = 1);
 
-require_once 'MyIterator.php';
+/**
+ * Iterator
+ */
+#require_once ('SPL\MyIterator.php');
+#
+#use SPL\MyIterator;
+#
+#$values = [1, 2, 3];
+#$it = new MyIterator($values);
+#
+#foreach($it as $key => $value) {
+#    echo $key, ': ', $value, "\n";
+#}
 
-$values = [1,2,3];
-$it = new MyIterator($values);
+/**
+ * IteratorAggregate
+ */
+#require_once('SPL\MyShedule.php');
+#
+#use SPL\MyShedule;
+#
+#
+#$shedule = new MyShedule();
+#$shedule->add('PHP', mktime(0, 40, 15, 3, 20, 2015)); // 2 // PHP: 20-03-2015
+#$shedule->add('XML', mktime(0, 18, 6, 1, 10, 2015)); // 1 // XML: 10-01-2015
+#$shedule->add('Java', mktime(0, 32, 35, 5, 26, 2015)); // 3 // Java: 26-05-2015
+#$shedule->add('MySQL', mktime(0, 20, 48, 11, 20, 2015)); // 6 // MySQL: 20-11-2015
+#$shedule->add('JavaScript', mktime(0, 10, 59, 7, 12, 2015)); // 4 // JavaScript: 12-07-2015
+#$shedule->add('HTML & CSS', mktime(0, 51, 12, 9, 28, 2015)); // 5 // HTML & CSS: 28-09-2015
+#
+#foreach($shedule as $key => $value) {
+#    echo $key, ': ', $value, "\n";
+#}
 
-foreach($it as $key => $value) {
-    echo $key, ': ', $value, "\n";
-}
+/**
+ * хз
+ */
+require_once('SPL\MyIterator.php');
+
+use SPL\NumberSquared;

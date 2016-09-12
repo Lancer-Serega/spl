@@ -1,0 +1,15 @@
+{
+    "name": "LancerSerega/SPL_Library_Test",
+    "description": "SPL Library Test",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey SHevchenko",
+            "email": "lancerserega@gmail.com"
+        }
+    ],
+    "require": {
+        "php":  ">=7.0"
+    }
+}

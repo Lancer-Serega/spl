@@ -7,15 +7,17 @@
  */
 declare(strict_types = 1);
 
+namespace SPL;
+
 class MyIterator implements \Iterator
 {
     private $var = [];
+    private $count = 0;
 
     public function __construct(array $array)
     {
-        if(is_array($array)) {
-            $this->var = $array;
-        }
+        $this->var = $array;
+        $this->count = count($array);
     }
 
     public function __toString() : string
@@ -40,35 +42,26 @@ class MyIterator implements \Iterator
         reset($this->var);
     }
 
+    public function key()
+    {
+        return key($this->var);
+    }
+
     public function next()
     {
-        $var = next($this->var);
-        echo 'Next: ', $var, "\n\n";
-
-        return $var;
+        return next($this->var);
     }
 
     public function valid() : bool
     {
-        $var = $this->current() !== false;
-        echo 'Valid: ', $var, "\n\n";
-
-        return $var;
+        return $this->current() !== 0;
     }
 
     public function current()
     {
-        $var = current($this->var);
-        echo 'Current: ', $var, "\n";
 
-        return $var;
-    }
+        $this->count--;
 
-    public function key() : int
-    {
-        $var = key($this->var);
-        echo 'Key: ', $var, "\n";
-
-        return $var;
+        return date('d-m-Y', current($this->var));
     }
 }
