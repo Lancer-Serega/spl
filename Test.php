@@ -90,3 +90,25 @@
 #
 #unset($obj['password']);
 
+/**
+ * Generators implements(in systems) \Iterator
+ *
+ * @return Generator
+ */
+function generator()
+{
+    echo 'Start', "\n";
+
+    for($i = 0; $i <= 5; ++$i) {
+        yield $i;
+        echo 'Value: ', $i, "\n";
+    }
+
+    echo 'Finish', "\n";
+}
+
+$generator = generator();
+
+//var_dump($generator); // object(Generator)[1]
+
+foreach($generator as $value);
