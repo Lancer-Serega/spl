@@ -51,15 +51,25 @@ require_once('SPL\MathIterator.php');
 use SPL\MathIterator;
 
 
-$obj1 = new MathIterator(1, 20, 'pow');
-$obj2 = new MathIterator(1, 20, 'sqrt');
+$obj1 = new MathIterator(1, 10, 'pow');
+$obj2 = new MathIterator(1, 10, 'sqrt');
+$obj3 = new MathIterator();
+//$obj3->setStart(1);
+//$obj3->setEnd(10);
+//$obj3->setAction('sqrt');
+$obj3->setStart(1)->setEnd(10)->setAction('pow');
 
-foreach($obj1 as $key => $value) {
-    echo 'Pow int:', $key, ' = ', $value, "\n";
-}
+//foreach($obj1 as $key => $value) {
+//    echo 'Pow int:', $key, ' = ', $value, "\n";
+//}
+//echo "\n\n";
 
-echo "\n\n";
+//foreach($obj2 as $key => $value) {
+//    echo 'Sqrt int:', $key, ' = ', $value, "\n";
+//}
+//echo "\n\n";
 
-foreach($obj2 as $key => $value) {
+foreach($obj3 as $key => $value) {
     echo 'Sqrt int:', $key, ' = ', $value, "\n";
 }
+

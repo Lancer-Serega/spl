@@ -18,6 +18,37 @@ class MathIterator implements \IteratorAggregate
     public $_end;
     public $_action;
 
+    /**
+     * @param int $start
+     *
+     */
+    public function setStart($start): MathIterator
+    {
+        $this->_start = $start;
+
+        return $this;
+    }
+
+    /**
+     * @param int $end
+     */
+    public function setEnd($end): MathIterator
+    {
+        $this->_end = $end;
+
+        return $this;
+    }
+
+    /**
+     * @param string $action
+     */
+    public function setAction($action): MathIterator
+    {
+        $this->_action = $action;
+
+        return $this;
+    }
+
     public function getIterator()
     {
         switch($this->_action){
@@ -34,12 +65,12 @@ class MathIterator implements \IteratorAggregate
         }
     }
 
-    public function __construct($_start, $_end, $_action)
+/*    public function __construct($_start, $_end, $_action)
     {
         $this->_start = $_start;
         $this->_end = $_end;
         $this->_action = $_action;
-    }
+    }*/
 
     public function getStart()
     {
