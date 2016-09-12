@@ -10,7 +10,7 @@ declare(strict_types = 1);
 /**
  * Iterator
  */
-#require_once ('SPL\MyIterator.php');
+#require_once __DIR__ . '/SPL/MyIterator.php';
 #
 #use SPL\MyIterator;
 #
@@ -24,7 +24,7 @@ declare(strict_types = 1);
 /**
  * IteratorAggregate
  */
-#require_once('SPL\MyShedule.php');
+#require_once __DIR__ . '/SPL/MyShedule.php';
 #
 #use SPL\MyShedule;
 #
@@ -46,30 +46,48 @@ declare(strict_types = 1);
  * MathIterator
  * IteratorAggregate
  */
-require_once('SPL\MathIterator.php');
+#require_once __DIR__ . '/SPL/MathIterator.php';
+#
+#use SPL\MathIterator;
+#
+#
+#$obj1 = new MathIterator(1, 10, 'pow');
+#$obj2 = new MathIterator(1, 10, 'sqrt');
+#$obj3 = new MathIterator();
+#//$obj3->setStart(1);
+#//$obj3->setEnd(10);
+#//$obj3->setAction('sqrt');
+#$obj3->setStart(1)->setEnd(100)->setAction('sqrt');
+#
+#//foreach($obj1 as $key => $value) {
+#//    echo 'Pow int:', $key, ' = ', $value, "\n";
+#//}
+#//echo "\n\n";
+#
+#//foreach($obj2 as $key => $value) {
+#//    echo 'Sqrt int:', $key, ' = ', $value, "\n";
+#//}
+#//echo "\n\n";
+#
+#foreach($obj3 as $key => $value) {
+#    echo 'Sqrt int:', $key, ' = ', $value, "\n";
+#}
 
-use SPL\MathIterator;
+/**
+ * Registry implements ArrayAccess
+ * Object as Array
+ */
+require_once __DIR__ . '/SPL/Registry.php';
+
+use SPL\Registry;
 
 
-$obj1 = new MathIterator(1, 10, 'pow');
-$obj2 = new MathIterator(1, 10, 'sqrt');
-$obj3 = new MathIterator();
-//$obj3->setStart(1);
-//$obj3->setEnd(10);
-//$obj3->setAction('sqrt');
-$obj3->setStart(1)->setEnd(10)->setAction('pow');
+$obj = new Registry();
+$obj['login'] = 'Lancer';
+$obj['password'] = 'pass@word';
 
-//foreach($obj1 as $key => $value) {
-//    echo 'Pow int:', $key, ' = ', $value, "\n";
-//}
-//echo "\n\n";
-
-//foreach($obj2 as $key => $value) {
-//    echo 'Sqrt int:', $key, ' = ', $value, "\n";
-//}
-//echo "\n\n";
-
-foreach($obj3 as $key => $value) {
-    echo 'Sqrt int:', $key, ' = ', $value, "\n";
+if(isset($obj['login'])) {
+    echo $obj['login'], ' : ', $obj['password'];
 }
 
+unset($obj['password']);
