@@ -3,13 +3,12 @@
  * Created by PhpStorm.
  * User: Lancer
  * Date: 12.09.2016
- * Time: 5:27
+ * Time: 6:19
  */
-declare(strict_types = 1);
 
 namespace SPL;
 
-class NumberSquared implements \Iterator
+class NumberSquareRoot implements \Iterator
 {
     private $_cur;
     private $_obj;
@@ -21,7 +20,7 @@ class NumberSquared implements \Iterator
 
     public function current()
     {
-        return pow($this->_cur, 2);
+        return sqrt($this->_cur);
     }
 
     public function next()
@@ -34,7 +33,7 @@ class NumberSquared implements \Iterator
         return $this->_cur;
     }
 
-    public function valid() : boolean
+    public function valid()
     {
         return $this->_cur <= $this->_obj->getEnd();
     }

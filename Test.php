@@ -47,3 +47,4 @@ declare(strict_types = 1);
 require_once('SPL\MyIterator.php');
 
 use SPL\NumberSquared;
+
