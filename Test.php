@@ -175,75 +175,156 @@
 #
 #    echo $line;
 #}
+
 /**
  * @return Generator
  */
-function generator()
-{
-    yield 'a';
-    yield 'c';
-    yield 'lo';
-    yield [
-        'Anna' => [
-            'name' => 'anna',
-            'year' => 18,
-        ],
-
-        'array' => [
-            /*0 =>*/
-            'gdfghjhdgfj',
-            /*1 =>*/
-            'dhgjhdgj',
-            /*2 =>*/
-            'hgdjdghjdhg',
-            /*3 =>*/
-            'hdgjdghj',
-            /*4 =>*/
-            'ghdjhdgj',
-            /*5 =>*/
-            'hdgjghdj',
-            /*6 =>*/
-            'dyjdhgjhg',
-        ],
-
-        'Vasya' => [
-            'name' => 'Vasiliy',
-            'year' => 86,
-        ],
-    ];
-    yield 'Lancer' => [
-        'name' => 'Lancer',
-        'year' => 24,
-        'phone' => [
-            'tele2' => [
-                '0' => 'num1',
-                'num2',
-            ],
-            'megafon' => 'mega1',
-            'mts' => 'm1',
-        ]
-    ];
-}
-
-foreach(generator() as $key => $value) {
-    echo $key, ' : ', $value, "\n";
-}
-
-echo "=======\n";
-
-function echoLogger()
-{
-    while(true) {
-        echo 'Log: ' . yield . "\n";
-    }
-}
-
+#function generator()
+#{
+#    yield 'a';
+#    yield 'c';
+#    yield 'lo';
+#    yield [
+#        'Anna' => [
+#            'name' => 'anna',
+#            'year' => 18,
+#        ],
+#
+#        'array' => [
+#            /*0 =>*/
+#            'gdfghjhdgfj',
+#            /*1 =>*/
+#            'dhgjhdgj',
+#            /*2 =>*/
+#            'hgdjdghjdhg',
+#            /*3 =>*/
+#            'hdgjdghj',
+#            /*4 =>*/
+#            'ghdjhdgj',
+#            /*5 =>*/
+#            'hdgjghdj',
+#            /*6 =>*/
+#            'dyjdhgjhg',
+#        ],
+#
+#        'Vasya' => [
+#            'name' => 'Vasiliy',
+#            'year' => 86,
+#        ],
+#    ];
+#    yield 'Lancer' => [
+#        'name' => 'Lancer',
+#        'year' => 24,
+#        'phone' => [
+#            'tele2' => [
+#                '0' => 'num1',
+#                'num2',
+#            ],
+#            'megafon' => 'mega1',
+#            'mts' => 'm1',
+#        ]
+#    ];
+#}
+#
+#foreach(generator() as $key => $value) {
+#    echo $key, ' : ', $value, "\n";
+#}
+#
+#echo "=======\n";
+#
+#function echoLogger()
+#{
+#    while(true) {
+#        echo 'Log: ' . yield . "\n";
+#    }
+#}
+#
 /** @noinspection PhpVoidFunctionResultUsedInspection */
-$logger = echoLogger();
+#$logger = echoLogger();
 /**
  * @var $logger Generator
  */
-$logger->send('Foo');
-$logger->send('Franc');
+#$logger->send('Foo');
+#$logger->send('Franc');
+#
+#echo "=======\n";
 
-echo "=======\n";
+$shop = [
+    'Fruits' => [
+        'Orange',
+        'Apple',
+        'Limon',
+        'Cherry',
+        'Banana',
+    ],
+    'Vegetable' => [
+        'Cabbage',
+        'Potato',
+        'Tomato',
+        'Onion' => [
+            'self' => [
+                1,
+                2 => [
+                    'a',
+                    'b',
+                    'c'
+                ],
+                3,
+            ],
+            'update',
+        ],
+    ],
+    'Chemicals' => [
+        'Toothpaste',
+        'Shampoo',
+        'SOAP',
+        'Shower Gel',
+        'White',
+    ],
+    'School' => [
+        'Pen',
+        'Pencil',
+        'Ruler',
+        'Compass',
+        'Notebook',
+    ],
+];
+
+$RAI = new RecursiveArrayIterator($shop);
+$RII = new RecursiveIteratorIterator($RAI, 1);
+/**
+ * @param $depth
+ */
+function depthLn($depth)
+{
+    for($i = 1; $i < $depth; $i++) {
+        echo($depth . '>> ' . "\t");
+    }
+}
+
+#foreach ($RII as $key => $value){
+#    $depth = $RII->getDepth();
+#
+#    echo depthLn($depth), $key, ':', $value, "\n";
+#}
+
+require_once __DIR__ . '/SPL/MyArrayList.php';
+
+use SPL\MyArrayList;
+
+
+$RAI2 = new MyArrayList(
+    new RecursiveArrayIterator($shop), RecursiveIteratorIterator::SELF_FIRST
+);
+
+echo '<ul>', "\n";
+
+foreach($RAI2 as $key => $value) {
+
+    if($RAI2->callHasChildren()) {
+        echo '<li>[<b>', $key, '</b>]</li>', "\n";
+        continue;
+    }
+
+    echo '<li>', $value, '</li>', "\n";
+}
